@@ -6,6 +6,7 @@ const searchInput = document.querySelector("#search-input");
 const notesList = document.querySelector("#notes-list");
 const noteCount = document.querySelector("#note-count");
 const errorMessage = document.querySelector("#error-message");
+const clearAllBtn = document.querySelector("#clear-all-btn");
 
 const STORAGE_KEY = "quicknotes-app-notes";
 const MAX_LENGTH = 200;
@@ -133,8 +134,21 @@ function deleteNote(id) {
   saveNotes();
   render();
 }
+// Delete every note after the user confirms
+function clearAllNotes() {
+  if (notes.length === 0) {
+    return;
+  }
+  if (!confirm("Delete all notes?")) {
+    return;
+  }
+  notes = [];
+  saveNotes();
+  render();
+}
 
 // Update the list as the user types in the search box
 searchInput.addEventListener("input", render);
 
 render();
+clearAllBtn.addEventListener("click", clearAllNotes);
