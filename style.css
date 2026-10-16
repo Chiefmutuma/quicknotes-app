@@ -239,3 +239,12 @@ footer {
     align-items: flex-start;
   }
 }
+   /* Clear all button in red */
+   .clear-all-btn {
+     margin-top: 12px;
+     background-color: var(--danger);
+   }
+
+   .clear-all-btn:hover {
+     background-color: #922b21;
+   }
